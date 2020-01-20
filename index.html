@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        body{
+            min-height:100vh;
+        }
+        .marcada{
+            background:green!important;
+            font-weight:bold;
+        }
+        li{
+            list-style-type:none;
+            height: 50px;
+            display:flex;
+            flex-flow:row nowrap;
+            align-items:center;
+            justify-content:center;
+        }
+        ul{
+            padding-left:0;
+        }
+        #checkbox{
+            transform:scale(1.5);
+        }
+        #eliminar{
+            cursor:pointer;
+        }
+        #contenedor{
+            flex:1 0 auto;
+        }
+        #app-4{
+            min-height:100vh;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column">
+    <div class="container-fluid bg-dark"  class="d-flex flex-column" id="contenedor">
+        <div id="app-4" class="d-flex flex-column justify-content-between">
+            <div class="row text-white">
+                <div class="col-10 offset-1">
+                    <h1 class="text-white mb-5 mt-5">Proyecto Vue.js - David Medina Puyol</h1>
+                </div>
+                <div class="col-8 col-md-8 offset-md-1">
+                    <input type="text" class="form-control-lg form-control" name="" id="texto" v-model="texto" aria-describedby="helpId" placeholder="¿Qué quieres recordar?">
+                </div>
+                <div class="col-4 col-md-2">
+                    <button class="btn btn-lg btn-light w-100" id="add" v-on:click="add">Añadir</button>
+                </div>
+                <hr class="col-12 col-md-10 offset-md-1 bg-light">
+                <div class="col-12 col-md-5 offset-md-1">
+                    <span>{{nCompletadas}} tareas completadas de un total de {{nTareas}} | </span>
+                    <span class="h6 text-warning" id="eliminar" v-on:click="eliminaCompletados">Eliminar completados</span>
+                </div>
+                <div class="col-12 col-md-4 offset-md-1">
+                    <label>Orden: </label>
+                    <label for="ascendente">Ascendente</label>
+                    <input type="radio" v-model="orden" id="ascendente" name="orden" value="1" checked>
+                    <label for="descendente">Descendente</label>
+                    <input type="radio" v-model="orden" id="descendente" name="orden" value="2">
+                </div>
+                <hr class="col-12 col-md-10 offset-md-1 bg-light">
+                <div class="col-12 col-md-10 offset-md-1" id="tareas">
+                    <ul class="list-group">
+                        <!--
+                        <li v-for="(todo,index) in listaOrdenada" class="list-group-item bg-dark text-white" v-bind:class="{marcada: todo.checked}">
+                            <input type="checkbox" id="checkbox" v-model="todo.checked">
+                            <label for="checkbox">{{todo.text}}</label>
+                        </li>-->
+                        <nota v-for="(todo,index) in listaOrdenada" class="list-group-item bg-dark text-white" v-bind:todo="todo" v-bind:key="index">
+                        </nota>
+                    </ul>
+                </div>
+            </div>
+            <pie></pie>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
